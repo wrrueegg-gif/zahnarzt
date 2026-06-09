@@ -29,13 +29,13 @@ export type Beat = {
 const DEFAULT_BEATS: Beat[] = [
   {
     range: [0.0, 0.32],
-    headline: "Ankommen. Durchatmen.",
-    body: "Willkommen in Ihrer Wohlfühl-Praxis am See.",
+    headline: "Endlich angstfrei zum Zahnarzt.",
+    body: "Sanfte, moderne Zahnmedizin – persönlich und ganz ohne Hektik.",
   },
   {
     range: [0.34, 0.66],
-    headline: "Präzision, die man spürt.",
-    body: "Modernste Zahnmedizin – ruhig, sanft und auf den Punkt.",
+    headline: "4,9 von 5 – aus gutem Grund.",
+    body: "Über 12.000 Patientinnen und Patienten vertrauen uns ihr Lächeln an.",
   },
   {
     range: [0.68, 1.0],
@@ -215,7 +215,7 @@ export function ScrollSequence({
         <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-ink/55 to-transparent" />
 
         {/* Text-Beats */}
-        <div className="container-px absolute inset-0 flex items-end pb-[12vh] sm:items-center sm:pb-0">
+        <div className="container-px absolute inset-0 flex items-end pb-[14vh] sm:pb-[16vh]">
           <div className="relative w-full max-w-xl">
             {beats.map((b, i) => (
               <BeatText key={i} beat={b} progress={scrollYProgress} />
