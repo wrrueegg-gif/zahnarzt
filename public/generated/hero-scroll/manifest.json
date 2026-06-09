@@ -1,0 +1,14 @@
+{
+  "id": "hero-scroll",
+  "kind": "canvas-sequence",
+  "format": "webp",
+  "frameCount": 241,
+  "framePattern": "frame_%04d.webp",
+  "indexBase": 1,
+  "pad": 4,
+  "fps": 24,
+  "publicUrl": "/generated/hero-scroll",
+  "frameUrlTemplate": "/generated/hero-scroll/frame_{index}.webp",
+  "poster": "/generated/hero-scroll/frame_0001.webp",
+  "size": { "width": 1470, "height": 630, "fit": "cover" }
+}

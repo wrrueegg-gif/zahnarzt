@@ -1,0 +1,13 @@
+/node_modules
+/.next
+/out
+/build
+.DS_Store
+*.pem
+.env*
+next-env.d.ts
+.vercel
+*.tsbuildinfo
+
+# Interne Akquise-Daten (nicht veröffentlichen)
+leads-zahnaerzte-zuerich.csv
