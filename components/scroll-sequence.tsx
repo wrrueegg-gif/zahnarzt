@@ -292,7 +292,7 @@ function ToothSparkle({ progress }: { progress: MotionValue<number> }) {
     <div
       aria-hidden
       className="pointer-events-none absolute"
-      style={{ left: "55%", top: "52%" }}
+      style={{ left: "58%", top: "55%" }}
     >
       <motion.div style={{ opacity, scale, x: "-50%", y: "-50%" }} className="relative">
         {/* Weicher Schimmer hinter dem Funkeln */}
