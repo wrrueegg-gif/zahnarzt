@@ -114,6 +114,10 @@ export function ScrollSequence({
     if (!canvas || !imgs.length) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+    // Hochwertiges Sampling – die Frames (3360×1440) werden i. d. R.
+    // herunterskaliert; "high" liefert dabei das schärfste Ergebnis.
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = "high";
 
     // Canvas-Backing-Store immer auf die aktuelle Anzeigegrösse bringen
     const dpr = Math.min(window.devicePixelRatio || 1, 2);

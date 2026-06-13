@@ -10,5 +10,5 @@
   "publicUrl": "/generated/hero-scroll",
   "frameUrlTemplate": "/generated/hero-scroll/frame_{index}.webp",
   "poster": "/generated/hero-scroll/frame_0001.webp",
-  "size": { "width": 1470, "height": 630, "fit": "cover" }
+  "size": { "width": 3360, "height": 1440, "fit": "cover" }
 }
