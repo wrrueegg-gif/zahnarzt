@@ -218,6 +218,9 @@ export function ScrollSequence({
         {/* Top-Scrim sichert die Lesbarkeit des hellen Headers */}
         <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-ink/55 to-transparent" />
 
+        {/* Dezentes Zahn-Funkeln in der Schluss-Szene */}
+        <ToothSparkle progress={scrollYProgress} />
+
         {/* Text-Beats */}
         <div className="container-px absolute inset-0 flex items-end pb-[14vh] sm:pb-[16vh]">
           <div className="relative w-full max-w-xl">
@@ -270,6 +273,57 @@ function BeatText({
         </Link>
       )}
     </motion.div>
+  );
+}
+
+// Dezentes „Blitzen" der Zähne – erscheint sanft im letzten Scroll-Abschnitt
+// (Schluss-Szene mit dem Lächeln) und funkelt leise weiter.
+// Position als %-Wert relativ zum Container; durch object-cover bleibt das
+// Lächeln auf allen Bildschirmgrössen ungefähr an dieser Stelle.
+const SPARKLE_PATH =
+  "M12 0c.45 6.3 1.7 11.55 12 12-10.3.45-11.55 5.7-12 12-.45-6.3-1.7-11.55-12-12 10.3-.45 11.55-5.7 12-12Z";
+
+function ToothSparkle({ progress }: { progress: MotionValue<number> }) {
+  // Ein-/Ausblenden an den Scroll-Fortschritt gekoppelt: nur ganz am Schluss sichtbar
+  const opacity = useTransform(progress, [0.85, 0.93, 1], [0, 1, 1]);
+  const scale = useTransform(progress, [0.85, 0.97], [0.4, 1]);
+
+  return (
+    <div
+      aria-hidden
+      className="pointer-events-none absolute"
+      style={{ left: "53%", top: "52%" }}
+    >
+      <motion.div style={{ opacity, scale, x: "-50%", y: "-50%" }} className="relative">
+        {/* Weicher Schimmer hinter dem Funkeln */}
+        <motion.span
+          className="absolute left-1/2 top-1/2 h-12 w-12 rounded-full bg-white/25 blur-lg"
+          style={{ x: "-50%", y: "-50%" }}
+          animate={{ opacity: [0.1, 0.45, 0.1], scale: [0.7, 1.2, 0.7] }}
+          transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+        />
+        {/* Haupt-Funkeln */}
+        <motion.svg
+          viewBox="0 0 24 24"
+          className="relative block h-6 w-6 text-white"
+          style={{ filter: "drop-shadow(0 0 6px rgba(255,255,255,0.9))" }}
+          animate={{ scale: [0.7, 1.1, 0.7], rotate: [0, 35, 0], opacity: [0.75, 1, 0.75] }}
+          transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <path d={SPARKLE_PATH} fill="currentColor" />
+        </motion.svg>
+        {/* Kleines Neben-Funkeln */}
+        <motion.svg
+          viewBox="0 0 24 24"
+          className="absolute -right-2.5 -top-1.5 block h-2.5 w-2.5 text-white"
+          style={{ filter: "drop-shadow(0 0 4px rgba(255,255,255,0.85))" }}
+          animate={{ scale: [0, 1, 0], opacity: [0, 1, 0] }}
+          transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: 0.9 }}
+        >
+          <path d={SPARKLE_PATH} fill="currentColor" />
+        </motion.svg>
+      </motion.div>
+    </div>
   );
 }
 
